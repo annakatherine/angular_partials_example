@@ -2,12 +2,42 @@
 <html ng-app='myApp'>
   <head>
     <meta charset="utf-8">
-    <title>aNGular review</title>
+    <title>Assignment App</title>
     <script src="vendors/angular.min.js" charset="utf-8"></script>
     <script src="scripts/script.js" charset="utf-8"></script>
   </head>
   <body>
-    <div ng-include="'partials/header.html'"></div>
-    <div ng-include="'partials/input.html'"></div>
+    <h1> Assignments </h1>
+    <div ng-controller ="assignmentController">
+       <form>
+       <label for="newAssignment">Add an Assignment </label>
+       <input type="text" name="assignmentId" ng-model="assignmentId" placeholder="New Assignment">
+       <input type="text" name="student_name" ng-model="student_name" placeholder="Student Name">
+       <input type="text" name="score" ng-model="score" placeholder="Score">
+       <input type="text" name="date_completed" ng-model="date_completed" placeholder="Date completed">
+       <input type="text" name="completed" ng-model="completed" placeholder="Completed">
+       <button type="button" name="button" ng-click='addAssignment();'>Add Assignment </button>
+     </form>
+      <table id="assignmentTable">
+         <thead>
+           <tr>
+             <th>Assignment</th>
+             <th>Student Name</th>
+             <th>Score</th>
+             <th>Date Turned In</th>
+             <th>Completed</th>
+           </tr>
+         </thead>
+       <tbody>
+         <tr ng-repeat="record in ARRAY">
+           <td> {{ record.assignment }} </td>
+           <td> {{ record.student_name }} </td>
+           <td> {{ record.date_completed }} </td>
+           <td> {{ record.score }} </td>
+           <td> {{ record.done }} </td>
+            </tr>
+        </tbody>
+      </table>
+      </div>
     </body>
-</html>
+  </html>
